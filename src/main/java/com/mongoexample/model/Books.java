@@ -1,20 +1,21 @@
 package com.mongoexample.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "books")
 public class Books {
 	
+	@Id
 	public String id;
 	public String name;
 	public String author;
 	public int price;
 	
-	public Books(String name, String author, int price) {
-		this.name = name;
-		this.author = author;
-		this.price = price;
-	}
+	/*
+	 * public Books(String name, String author, int price) { this.name = name;
+	 * this.author = author; this.price = price; }
+	 */
 
 	public String getId() {
 		return id;
@@ -48,6 +49,10 @@ public class Books {
 		this.price = price;
 	}
 	
+	 @Override
+	  public String toString() {
+	    return "Books [id=" + id + ", name=" + name + ", author=" + author + ", price=" + price + "]";
+	  }
 	
 
 }
