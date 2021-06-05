@@ -23,6 +23,8 @@ public class BooksControllerImpl implements BooksController{
 
 	@Override
 	public void booksAdd(Books books) {
+		System.out.println("***********************booksAdd**************************");
+		System.out.println(books.getName());		
 		booksService.booksSave(books) ;
 	}
 
@@ -30,5 +32,23 @@ public class BooksControllerImpl implements BooksController{
 	public List<Books> booksDaoAll() {
 		return booksService.booksDaoAll();
 	}
+
+	@Override
+	public void booksDaoAdd(Books books) {
+		booksService.booksDaoSave(books) ;
+		
+	}
+
+	@Override
+	public void booksDaoUpdate(Books books) {
+		booksService.booksDaoUpdate(books) ;
+		
+	}
+
+//	@Override
+//	public void booksObjAdd(Books books) {
+//		System.out.println(books.getName());		
+//		booksService.booksSave(books) ;
+//	}
 
 }

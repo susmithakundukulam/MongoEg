@@ -24,7 +24,7 @@ public class BooksService {
 	}
 	
 	public void booksSave(Books books) {
-		bookRepository.save(books);
+		bookRepository.insert(books);
 	}
 	
 	
@@ -32,4 +32,15 @@ public class BooksService {
 		return booksDao.booksDaoAll();
 	}
 
+	public void booksDaoSave(Books books) {
+		booksDao.saveDao(books);
+	}
+	
+	public void booksDaoUpdate(Books books) {
+		Books book = bookRepository.findByName(books.getName());
+		System.out.println("**************************************************");
+		System.out.println(book.getId());
+		book.setPrice(books.getPrice());
+		bookRepository.save(book);
+	}
 }
