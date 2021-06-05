@@ -24,7 +24,7 @@ public class BooksService {
 	}
 	
 	public void booksSave(Books books) {
-		bookRepository.insert(books);
+		bookRepository.save(books);
 	}
 	
 	
@@ -42,5 +42,10 @@ public class BooksService {
 		System.out.println(book.getId());
 		book.setPrice(books.getPrice());
 		bookRepository.save(book);
+	}
+	 
+	public Books getByName(String name) {
+		Books book = bookRepository.findByName1(name);
+		return book;
 	}
 }

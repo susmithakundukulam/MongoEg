@@ -1,5 +1,7 @@
 package com.mongoexample.controllerImpl;
 
+import java.awt.print.Book;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mongoexample.controller.BooksController;
 import com.mongoexample.model.Books;
+import com.mongoexample.model.Topics;
 import com.mongoexample.service.BooksService;
 
 @RestController
@@ -45,10 +48,12 @@ public class BooksControllerImpl implements BooksController{
 		
 	}
 
-//	@Override
-//	public void booksObjAdd(Books books) {
-//		System.out.println(books.getName());		
-//		booksService.booksSave(books) ;
-//	}
+	@Override
+	public void topicsObjAdd(Topics topics) {
+		Books books = booksService.getByName("Eclipse");
+		
+		books.addTopics(topics);
+		booksService.booksSave(books) ;
+	}
 
 }

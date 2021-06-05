@@ -1,5 +1,8 @@
 package com.mongoexample.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -7,10 +10,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Books {
 	
 	@Id
-	public String id;
-	public String name;
-	public String author;
-	public int price;
+	private String id;
+	private String name;
+	private String author;
+	private int price;
+	private List<Topics> topics;
+	
+	
 	
 	/*
 	 * public Books(String name, String author, int price) { this.name = name;
@@ -49,10 +55,28 @@ public class Books {
 		this.price = price;
 	}
 	
-	 @Override
+
+	public List<Topics> getTopics() {
+		return topics;
+	}
+
+	public void setTopics(List<Topics> topics) {
+		this.topics = topics;
+	}
+
+	@Override
 	  public String toString() {
 	    return "Books [id=" + id + ", name=" + name + ", author=" + author + ", price=" + price + "]";
 	  }
+	
+	public void addTopics(Topics topic) {
+		if(topics == null) {
+			topics = new ArrayList<Topics>();
+			topics.add(topic);
+		}else { 
+			topics.add(topic);
+		}
+	}
 	
 
 }

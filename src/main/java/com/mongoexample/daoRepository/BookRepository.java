@@ -7,9 +7,11 @@ import com.mongoexample.model.Books;
 
 public interface BookRepository extends MongoRepository<Books, String>{
 	
-	//@Query("{ 'name' : ?0 }")
+	
 	 @Query(value="{ 'name' : ?0 }", fields="{ 'name' : 1, 'author' : 1, 'price' :1}")
-
 	Books findByName(String name);
+	 
+	 @Query(value="{name : ?0}", fields="{name : 0}")
+	 Books findByName1(String name);
 
 }
