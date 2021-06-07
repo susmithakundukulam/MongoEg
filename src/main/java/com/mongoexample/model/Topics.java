@@ -1,20 +1,26 @@
 package com.mongoexample.model;
 
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "topics")
 public class Topics {
 	
+	@Transient
+    public static final String SEQUENCE_NAME = "seq_id";
+	
 	@Id
-	private int id;
+	private long id;
 	
 	private String subject;
 	private int count;
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getSubject() {

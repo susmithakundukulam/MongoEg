@@ -27,7 +27,6 @@ public class BooksControllerImpl implements BooksController{
 	@Override
 	public void booksAdd(Books books) {
 		System.out.println("***********************booksAdd**************************");
-		System.out.println(books.getName());		
 		booksService.booksSave(books) ;
 	}
 
@@ -49,11 +48,20 @@ public class BooksControllerImpl implements BooksController{
 	}
 
 	@Override
-	public void topicsObjAdd(Topics topics) {
-		Books books = booksService.getByName("Eclipse");
+	public void topicsObjAdd(Topics topics,String id) {
+		// ****method 1***
+		//		Books books = booksService.getById(id);
+		//		books.addTopics(topics);
+		//		booksService.booksSave(books) ;
 		
-		books.addTopics(topics);
+		// ****method 1***
+		Books books = booksService.getByIdsaveTopic(id, topics);
 		booksService.booksSave(books) ;
+	}
+
+	@Override
+	public void topicsObjAddAI(Topics topics, String id) {
+		booksService.saveTopic(topics,id);
 	}
 
 }
